@@ -37,7 +37,7 @@ class BurgerBuilder extends Component {
     componentDidMount(){
         axios.get('https://react-my-burger-51c1d.firebaseio.com/Ingridients.json')
         .then((response)=>{
-                         this.setState({ingredients:response.data}) 
+                         this.setState({ingredients:response.data})
 
         })
     }
@@ -99,7 +99,7 @@ class BurgerBuilder extends Component {
             ingredients: this.state.ingredients,
             price : this.state.totalPrice,
             customer:{
-                name: 'Kartik Aggarwal',
+                name: 'Kavya',
                 address: "India ",
                 email: '1234Testing@nyu.edu',
                 deliveryMethod: 'Via Car'
@@ -130,17 +130,17 @@ class BurgerBuilder extends Component {
         let orderSummary = null;
 
         if(this.state.ingredients){
-            orderSummary = <OrderSummary 
+            orderSummary = <OrderSummary
             ingredients={this.state.ingredients}
             price={this.state.totalPrice}
             purchaseCancelled={this.purchaseCancelHandler}
             purchaseContinued={this.purchaseContinueHandler} />
         }
-         
+
 
         if (this.state.loading){
             orderSummary = <Spinner/>
-        
+
         }
 
         let burger = <Spinner />
@@ -157,12 +157,12 @@ class BurgerBuilder extends Component {
                         ordered={this.purchaseHandler}
                         price={this.state.totalPrice} />
                     </Aux>
-    
+
             )
 
         }
 
-         
+
         return (
             <Aux>
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
